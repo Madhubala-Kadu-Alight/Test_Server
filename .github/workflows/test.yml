@@ -19,5 +19,6 @@ jobs:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         run:
-          pwd
+          ssh tbiadoer@10.58.65.224
+          ls
           
