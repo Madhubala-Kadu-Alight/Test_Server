@@ -11,7 +11,7 @@ jobs:
    
     steps:
       - name: checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Execute script on server
         env:
@@ -19,6 +19,9 @@ jobs:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         run:
-          #chmod 600 /export/home/tbiadoer/.ssh/id_rsa
-          echo "${{ secrets.SERVER_USERNAME }}"
-          #ssh -0 StrictHostKeyChecking=no-i /export/home/tbiadoer/.ssh/id_rsa $SERVER_USERNAME@$SERVER_HOST 'bash -s' < /tmp/test/script.sh
+          if ssh -o ConnectionTimeOut=10 ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} exit >> /dev/null; then
+             echo "Server Connection Successfull!"
+          else
+             echo "Server Connection Failed!"
+             exit 1
+          fi
