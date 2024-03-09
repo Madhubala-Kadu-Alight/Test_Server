@@ -1,0 +1,23 @@
+name: Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - name: checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Execute script on server
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
+          SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+        run:
+          echo "server Details"
+          top
