@@ -19,10 +19,10 @@ jobs:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         run:
-          
           if ssh -o ConnectionTimeOut=10 ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} exit >> /dev ; then
              echo "Server Connection Successfull!"
           else
              echo "Server Connection Failed!"
              exit 1
           fi
+          
