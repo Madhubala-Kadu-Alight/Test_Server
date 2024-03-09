@@ -20,4 +20,5 @@ jobs:
           SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         run:
           chmod 600 /export/home/tbiadoer/.ssh/id_rsa
+          echo "${{ secrets.SERVER_USERNAME }}"
           ssh -0 StrictHostKeyChecking=no-i /export/home/tbiadoer/.ssh/id_rsa $SERVER_USERNAME@$SERVER_HOST 'bash -s' < /tmp/test/script.sh
