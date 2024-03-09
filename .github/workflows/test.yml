@@ -19,5 +19,10 @@ jobs:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER _SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         run:
-          ssh $SERVER_USERNAME@$SERVER_HOST 'bash -s' < /tmp/test/script.sh
+          #ssh $SERVER_USERNAME@$SERVER_HOST 'bash -s' < /tmp/test/script.sh
+
+          echo "{{ secrets.SERVER_HOST}}"
+          echo "{{ secrets.SERVER_USERNAME}}"
+
+          ssh tbiadoer@l4dvedap6030 'bash ls'   
        
